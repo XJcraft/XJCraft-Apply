@@ -18,10 +18,11 @@ def timestamp() -> int:
     return int(round(time.time() * 1000))
 
 
-def get_ip(header_name: str) -> str:
+def get_ip(header_name: str = "X-Real-Ip-Xj", ignores: list = ["127.0.0.1"]) -> str:
     """
     获取远端 IP，会优先考虑 header 中携带的 IP
     :param header_name: 用于存储远端 IP 的 header，用于在反代之后获取 IP
+    :param ignores: 忽略的 IP 列表
     :return: 获取到的 IP
     """
     header: str = request.headers.get(header_name)
@@ -36,8 +37,9 @@ def get_ip(header_name: str) -> str:
                 end_idx = len(header)
 
             curr_ip = header[start_idx:end_idx]
-            if not curr_ip.find("unknown"):
-                return curr_ip
+            if curr_ip.find("unknown") < 0:
+                if curr_ip not in ignores:
+                    return curr_ip
             else:
                 start_idx = end_idx + 1
 

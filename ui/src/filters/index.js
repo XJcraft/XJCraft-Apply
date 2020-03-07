@@ -92,5 +92,5 @@ export function ljust(str, len, ch) {
 export function timestampFilter(time) {
   if (time === null || time === undefined) return ''
   const date = (typeof time === 'number' || typeof time === 'string') ? new Date(time) : time
-  return date.getFullYear() + '年' + ljust(date.getMonth() + 1, 2, '0') + '月' + ljust(date.getDate(), 2, '0') + '日 ' + ljust(date.getHours(), 2, '0') + ':' + ljust(date.getMinutes(), 2, '0') + ':' + ljust(date.getSeconds(), 2, '0')
+  return date.getFullYear() + '-' + ljust(date.getMonth() + 1, 2, '0') + '-' + ljust(date.getDate(), 2, '0') + ' ' + ljust(date.getHours(), 2, '0') + ':' + ljust(date.getMinutes(), 2, '0') + ':' + ljust(date.getSeconds(), 2, '0')
 }

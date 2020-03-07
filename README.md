@@ -67,7 +67,7 @@ server {
         proxy_set_header Host $host;
         proxy_set_header X-Real-Ip $remote_addr;
         proxy_set_header X-Forward-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forward-Proto $schema;
+        proxy_set_header X-Forward-Proto $scheme;
     }
 }
 ```
@@ -88,7 +88,7 @@ server {
         proxy_set_header Host $host;
         proxy_set_header X-Real-Ip $remote_addr;
         proxy_set_header X-Forward-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forward-Proto $schema;
+        proxy_set_header X-Forward-Proto $scheme;
     }
 }
 ```

@@ -221,7 +221,7 @@ def req(cur: Cursor = None) -> dict:
             if op_name.endswith("_OP"):
                 op_name = op_name[:-3]
 
-    ip = get_ip("X-Forwarded-For")
+    ip = get_ip()
     if ip != '127.0.0.1':
         cur.execute("""
           SELECT
