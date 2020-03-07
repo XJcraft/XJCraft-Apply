@@ -101,7 +101,7 @@ def req_list(cur: Cursor = None) -> dict:
         *
       FROM apply_player
       ORDER BY req_time DESC
-      LIMIT %d OFFSET %d
+      LIMIT %s OFFSET %s
     """, (page_size, (page - 1) * page_size))
     res = cur.fetchall()
     data = [{
