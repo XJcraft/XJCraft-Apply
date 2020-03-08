@@ -223,7 +223,7 @@ export default {
             question: ['填空题 - 合成一个信标需要', '个黑曜石、', '个玻璃、以及一个', '。'],
             score: 5,
             correct: [
-              // 每个数组是一个空的答案，填里面任意一个都算对，判题的时候会自动去掉两变的空格，因此答案里也不要带两边空格
+              // 每个数组是一个空的答案，填里面任意一个都算对，判题的时候会自动去掉两边的空格，因此答案里也不要带两边空格
               // 对于字母，会忽略大小写
               ['3', '三'],
               ['5', '五'],
@@ -350,8 +350,9 @@ export default {
             break
           case 'input':
             let err = false
-            for (let i = e.correct.length - 1; i >= 0; i--) {
-              if (e.correct[i].indexOf(e.player[i]) < 0) {
+            for (let i = e.player.length - 1; i >= 0; i--) {
+              const playerAnswer = e.player[i].trim()
+              if (e.correct[i].indexOf(playerAnswer) < 0) {
                 err = true
                 break
               }
