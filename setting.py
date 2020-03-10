@@ -13,7 +13,7 @@ DATA_FOLDER = "data"
 
 # Database
 # sqlite: "sqlite:///%s/data.db" % DATA_FOLDER
-# mysql: "mysql://user:pass@host/db"
+# mysql: "mysql+pymysql://user:pass@host/db"
 SQL_URL = "sqlite:///%s/data.db" % DATA_FOLDER
 
 # HTTP Port
