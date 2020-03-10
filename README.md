@@ -93,7 +93,7 @@ server {
 ```
 /
 |-- ui 前端目录
-|  |-- TODO
+|   |-- TODO
 |-- app.py web 接口
 |-- main.py 启动文件
 |-- model.py DB 模型文件

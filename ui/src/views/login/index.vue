@@ -2,7 +2,7 @@
   .login-container
     el-form(ref="loginForm", :model="loginForm", :rules="loginRules", class="login-form", autocomplete="on", label-position="left")
       .title-container
-        h3.title OP 登陆
+        h3.title OP 登录
 
       el-form-item(prop="username")
         span.svg-container
@@ -37,7 +37,7 @@
           span.show-pwd(@click="showPwd")
             svg-icon(:icon-class="passwordType === 'password' ? 'eye' : 'eye-open'")
 
-      el-button(:loading="loading", type="primary", style="width:100%;margin-bottom:30px;", @click.native.prevent="handleLogin") 登陆
+      el-button(:loading="loading", type="primary", style="width:100%;margin-bottom:30px;", @click.native.prevent="handleLogin") 登录
 </template>
 
 <script>

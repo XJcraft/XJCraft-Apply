@@ -60,8 +60,8 @@ service.interceptors.response.use(
         if (logoutLock) return
         logoutLock = true
 
-        MessageBox.confirm('您的登陆已过期，您可以重新登陆，或取消继续留在此页面。', '重新登陆', {
-          confirmButtonText: '重新登陆',
+        MessageBox.confirm('您的登录已过期，您可以重新登录，或取消继续留在此页面。', '重新登录', {
+          confirmButtonText: '重新登录',
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
