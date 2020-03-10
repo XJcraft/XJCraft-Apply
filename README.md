@@ -7,13 +7,11 @@
 2. 首次使用执行下面的代码安装依赖
 
     ```shell script
-    pip3 install flask
-    pip3 install DBUtils
-    pip3 install pymysql
+    pip3 install -r requirements.txt
     ```
 3. 执行下面的代码启动
     ```shell script
-    python3 app.py
+    python3 main.py
     ```
 
 ### 前端
@@ -89,4 +87,19 @@ server {
         proxy_set_header X-Forward-Proto $scheme;
     }
 }
+```
+
+### 目录结构
+```
+/
+|-- ui 前端目录
+|  |-- TODO
+|-- app.py web 接口
+|-- main.py 启动文件
+|-- model.py DB 模型文件
+|-- requirements.txt 依赖包列表
+|-- setting.py 配置信息
+|-- util.py 工具代码
+|-- webbase.py web 开发的基础环境
+
 ```

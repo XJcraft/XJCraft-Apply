@@ -12,15 +12,15 @@
       style="width: 100%;",
       @cell-dblclick="row => row.edit = true"
     )
-      el-table-column(label="玩家名", prop="playerName", align="center")
+      el-table-column(label="玩家名", prop="player_name", align="center")
       el-table-column(label="密码", prop="password", align="center")
       el-table-column(label="申请时间", align="center")
         template(slot-scope="{row}")
-          span {{ row.reqTime | timestampFilter }}
+          span {{ row.req_time | timestampFilter }}
       el-table-column(label="审核时间", align="center")
         template(slot-scope="{row}")
-          span {{ row.applyTime | timestampFilter }}
-      el-table-column(label="审核人", prop="applyOP", align="center")
+          span {{ row.apply_time | timestampFilter }}
+      el-table-column(label="审核人", prop="apply_op", align="center")
       el-table-column(label="状态", align="center")
         template(slot-scope="{row}")
           span {{ row.status | statusFilter }}
@@ -35,7 +35,7 @@
             label 关系人&nbsp;
               i.el-icon-info
         template(slot-scope="{row}")
-          span {{ row.type === 'Invite' ? row.oldPlayerName : row.opName }}
+          span {{ row.type === 'Invite' ? row.old_player_name : row.op_name }}
       el-table-column(label="审批", align="center", width="160px")
         template(slot-scope="{row}")
           el-button(v-if="row.status === 'NEW'", size="mini", type="success", icon="el-icon-check", @click="handleApply(row, 'ACCEPT')")
@@ -102,8 +102,9 @@ export default {
       })
     },
     handleApply(row, result) {
+      // TODO 确认提示
       apply({
-        playerName: row.playerName,
+        player_name: row.player_name,
         result
       }).then(response => {
         notifySuccess(result === 'ACCEPT' ? '审核成功' : '拒绝成功')
@@ -114,6 +115,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-</style>

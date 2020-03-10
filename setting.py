@@ -4,15 +4,18 @@
 import os
 
 
-# Database
-MYSQL_HOST = "127.0.0.1"
-MYSQL_PORT = 3306
-MYSQL_DBNAME = "mc"
-MYSQL_USER = "root"
-MYSQL_PASSWD = "123456"
+APP_NAME = "XJCraft-Apply"
+# 调试模式是否开启
+DEBUG = True
 
 # 数据存放目录
 DATA_FOLDER = "data"
+
+# Database
+# sqlite: "sqlite:///%s/data.db" % DATA_FOLDER
+# mysql: "mysql://user:pass@host/db"
+SQL_URL = "sqlite:///%s/data.db" % DATA_FOLDER
+
 # HTTP Port
 HTTP_PORT = 5000
 # HTTP 密钥
@@ -40,6 +43,3 @@ def init():
             secret = os.urandom(160)
             f.write(secret)
     HTTP_SECRET = secret
-
-
-init()

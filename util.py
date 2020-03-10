@@ -3,9 +3,9 @@
 
 from threading import Thread
 import time
-from flask import request, session
 import functools
 import re
+from flask import request, session
 
 
 def start_new_daemon_thread(target, name: str):

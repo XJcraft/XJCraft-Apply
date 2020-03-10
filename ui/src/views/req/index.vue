@@ -47,12 +47,12 @@
 
       div.paddintop(v-else-if="step === 2")
         el-form.login-form(ref="reqForm", :model="reqForm", :rules="reqRules", autocomplete="off", label-position="left")
-          el-form-item(prop="playerName")
+          el-form-item(prop="player_name")
             el-input(
-              ref="playerName",
-              v-model="reqForm.playerName",
+              ref="player_name",
+              v-model="reqForm.player_name",
               placeholder="玩家名",
-              name="playerName",
+              name="player_name",
               type="text",
               tabindex="1"
             )
@@ -99,22 +99,22 @@
               el-option(key="Invite", label="老玩家邀请", value="Invite")
               el-option(key="PYJY", label="与 OP 协商", value="PYJY")
 
-          el-form-item(v-if="reqForm.type === 'Invite'", prop="oldPlayerName")
+          el-form-item(v-if="reqForm.type === 'Invite'", prop="old_player_name")
             el-input(
-              ref="oldPlayerName",
-              v-model="reqForm.oldPlayerName",
+              ref="old_player_name",
+              v-model="reqForm.old_player_name",
               placeholder="邀请人(玩家名)",
-              name="oldPlayerName",
+              name="old_player_name",
               type="text",
               tabindex="3"
             )
 
-          el-form-item(v-if="reqForm.type === 'PYJY'", prop="opName")
+          el-form-item(v-if="reqForm.type === 'PYJY'", prop="op_name")
             el-input(
-              ref="opName",
-              v-model="reqForm.opName",
+              ref="op_name",
+              v-model="reqForm.op_name",
               placeholder="OP(玩家名)",
-              name="opName",
+              name="op_name",
               type="text",
               tabindex="3"
             )
@@ -243,20 +243,20 @@ export default {
         wait: 0
       },
       reqForm: {
-        playerName: '',
+        player_name: '',
         password: '',
         qq: '',
         type: '',
-        oldPlayerName: '',
-        opName: ''
+        old_player_name: '',
+        op_name: ''
       },
       reqRules: {
-        playerName: [{ required: true, trigger: 'blur', validator: validateUsername }],
+        player_name: [{ required: true, trigger: 'blur', validator: validateUsername }],
         password: [{ required: true, trigger: 'blur', validator: validatePassword }],
         qq: [{ required: true, trigger: 'blur', validator: validateQQ }],
         type: [{ required: true, trigger: 'blur', validator: validateType }],
-        oldPlayerName: [{ required: () => this.type === 'Invite', trigger: 'blur', validator: validateUsername }],
-        opName: [{ required: () => this.type === 'PYJY', trigger: 'blur', validator: validateUsername }]
+        old_player_name: [{ required: () => this.type === 'Invite', trigger: 'blur', validator: validateUsername }],
+        op_name: [{ required: () => this.type === 'PYJY', trigger: 'blur', validator: validateUsername }]
       },
       passwordType: 'password',
       capsTooltip: false,
@@ -383,7 +383,7 @@ export default {
       }
     },
     clickStep3() {
-      this.$router.push({ name: '查询申请进度', params: { playerName: this.reqForm.playerName, qq: this.reqForm.qq }})
+      this.$router.push({ name: '查询申请进度', params: { player_name: this.reqForm.player_name, qq: this.reqForm.qq }})
     }
   }
 }
