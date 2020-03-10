@@ -95,7 +95,7 @@
               style="width: 100%"
             )
               el-option(key="", label="请选择申请类型", value="")
-              el-option(key="QQLevel", label="QQ 等级已达到太阳", value="QQLevel")
+              el-option(key="QQLevel", label="我的 QQ 等级已达到太阳", value="QQLevel")
               el-option(key="Invite", label="老玩家邀请", value="Invite")
               el-option(key="PYJY", label="与 OP 协商", value="PYJY")
 
