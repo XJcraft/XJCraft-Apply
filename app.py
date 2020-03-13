@@ -19,10 +19,10 @@ def login() -> dict:
     json_data = request.get_json()
 
     op: ApplyOP = ApplyOP.query \
-        .filter_by(username=json_data["username"], password=json_data["password"]) \
+        .filter_by(username=json_data["username"]) \
         .first()
 
-    if op:
+    if op and op.password == json_data["password"]:
         session["username"] = op.username
         return success()
     else:
@@ -99,7 +99,7 @@ def apply() -> dict:
 
     if result is ApplyStatus.ACCEPT:
         account: CrazyLoginAccount = CrazyLoginAccount.query \
-            .filter_by(name=json_data["player_name"]) \
+            .filter(func.lower(CrazyLoginAccount.name) == player.player_name.lower()) \
             .first()
         if account:
             return fail("玩家名已存在")  # TODO 未来允许 OP 帮助改名
@@ -144,7 +144,7 @@ def req() -> dict:
     if player:
         return fail("玩家名已存在")
     account: CrazyLoginAccount = CrazyLoginAccount.query \
-        .filter_by(name=json_data["player_name"]) \
+        .filter(func.lower(CrazyLoginAccount.name) == player.player_name.lower()) \
         .first()
     if account:
         return fail("玩家名已存在")

@@ -20,15 +20,17 @@ class ApplyStatus(Enum):
 
 class ApplyOP(db.Model, ModelMixin):
     __tablename__ = 'apply_op'
+    __table_args__ = {"mysql_charset": "utf8", "mysql_collate": "utf8_general_ci"}
     username = db.Column(db.String(16), primary_key=True)
-    password = db.Column(db.String(120, collation='NOCASE'), nullable=False)
+    password = db.Column(db.String(120), nullable=False)
 
 
 class ApplyPlayer(db.Model, ModelMixin):
     __tablename__ = 'apply_player'
+    __table_args__ = {"mysql_charset": "utf8", "mysql_collate": "utf8_general_ci"}
     id = db.Column(db.Integer, primary_key=True)
     player_name = db.Column(db.String(16), nullable=False)
-    password = db.Column(db.String(120, collation='NOCASE'), nullable=False)
+    password = db.Column(db.String(120), nullable=False)
     req_time = db.Column(db.DateTime, nullable=False)
     apply_time = db.Column(db.DateTime)
     apply_op = db.Column(db.String(16))
@@ -41,9 +43,13 @@ class ApplyPlayer(db.Model, ModelMixin):
 
 
 class CrazyLoginAccount(db.Model, ModelMixin):
+    """
+    注意，此表不由本应用创建，字符集和整理算法不可预知，业务里应注意这点
+    """
     __tablename__ = 'CrazyLogin_accounts'
+    __table_args__ = {"mysql_charset": "utf8", "mysql_collate": "utf8_general_ci"}
     name = db.Column(db.String(255), primary_key=True)
-    password = db.Column(db.String(255, collation='NOCASE'), primary_key=True)
+    password = db.Column(db.String(255), primary_key=True)
     ips = db.Column(db.Text, primary_key=True)
     lastAction = db.Column(db.DateTime, primary_key=True)
     loginFails = db.Column(db.Integer, primary_key=True)

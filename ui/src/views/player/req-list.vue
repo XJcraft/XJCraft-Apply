@@ -108,18 +108,13 @@ export default {
           type: 'warning'
         }
       ).then(() => {
-        applyApplyTask({
-          id: row.id,
-          result: action
+        apply({
+          player_name: row.player_name,
+          result
         }).then(response => {
-          apply({
-            player_name: row.player_name,
-            result
-          }).then(response => {
-            notifySuccess(result === 'ACCEPT' ? '审核成功' : '拒绝成功')
+          notifySuccess(result === 'ACCEPT' ? '审核成功' : '拒绝成功')
 
-            row.status = result
-          })
+          row.status = result
         })
       })
     }
