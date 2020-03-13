@@ -13,21 +13,21 @@
       @cell-dblclick="row => row.edit = true"
     )
       el-table-column(label="玩家名", prop="player_name", align="center")
-      el-table-column(label="申请时间", align="center")
+      el-table-column(label="申请时间", align="center", width="160px")
         template(slot-scope="{row}")
           span {{ row.req_time | timestampFilter }}
-      el-table-column(label="审核时间", align="center")
+      el-table-column(label="审核人", prop="apply_op", align="center")
+      el-table-column(label="审核时间", align="center", width="160px")
         template(slot-scope="{row}")
           span {{ row.apply_time | timestampFilter }}
-      el-table-column(label="审核人", prop="apply_op", align="center")
-      el-table-column(label="状态", align="center")
+      el-table-column(label="状态", align="center", width="80px")
         template(slot-scope="{row}")
           span {{ row.status | statusFilter }}
-      el-table-column(label="申请类型", align="center")
+      el-table-column(label="申请类型", align="center", width="120px")
         template(slot-scope="{row}")
           span {{ row.type | typeFilter }}
-      el-table-column(label="IP", prop="ip", align="center")
-      el-table-column(label="QQ", prop="qq", align="center")
+      el-table-column(label="IP", prop="ip", align="center", width="120px")
+      el-table-column(label="QQ", prop="qq", align="center", width="100px")
       el-table-column(align="center")
         template(slot="header")
           el-tooltip(content="对于老玩家邀请，此处为邀请人，对于 OP 线下沟通，此处为 OP 名", effect="dark", placement="bottom")
@@ -35,7 +35,7 @@
               i.el-icon-info
         template(slot-scope="{row}")
           span {{ row.type === 'Invite' ? row.old_player_name : row.op_name }}
-      el-table-column(label="审批", align="center", width="160px")
+      el-table-column(label="审批", align="center", width="140px")
         template(slot-scope="{row}")
           el-button(v-if="row.status === 'NEW'", size="mini", type="success", icon="el-icon-check", @click="handleApply(row, 'ACCEPT')")
           el-button(v-if="row.status === 'NEW'", size="mini", type="warning", icon="el-icon-close", @click="handleApply(row, 'DENY')")
