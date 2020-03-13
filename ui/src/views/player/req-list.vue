@@ -101,14 +101,26 @@ export default {
       })
     },
     handleApply(row, result) {
-      // TODO 确认提示
-      apply({
-        player_name: row.player_name,
-        result
-      }).then(response => {
-        notifySuccess(result === 'ACCEPT' ? '审核成功' : '拒绝成功')
+      this.$confirm(
+        '您确实要审核' + (result === 'ACCEPT' ? '通过' : '不通过') + '么？', '审核确认', {
+          confirmButtonText: '确认',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }
+      ).then(() => {
+        applyApplyTask({
+          id: row.id,
+          result: action
+        }).then(response => {
+          apply({
+            player_name: row.player_name,
+            result
+          }).then(response => {
+            notifySuccess(result === 'ACCEPT' ? '审核成功' : '拒绝成功')
 
-        row.status = result
+            row.status = result
+          })
+        })
       })
     }
   }
