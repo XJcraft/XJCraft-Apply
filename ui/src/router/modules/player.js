@@ -14,12 +14,18 @@ const playerRouter = {
     {
       path: 'req-list',
       component: () => import('@/views/player/req-list'),
-      name: '玩家申请列表',
+      name: '玩家申请',
       meta: {
-        title: '玩家申请列表'
+        title: '玩家申请'
       }
-    },
-    {
+    }, {
+      path: 'player-list',
+      component: () => import('@/views/player/player-list'),
+      name: '玩家列表',
+      meta: {
+        title: '玩家列表'
+      }
+    }, {
       path: 'ip-black-list',
       component: () => import('@/views/player/ip-black-list'),
       name: 'IP 黑名单',

@@ -18,6 +18,7 @@
 
       div.paddintop(v-else-if="step === 1", style={ width: '600px', margin: '0 auto', color: '#eee' })
         div(v-for="(qa, idx) in step1.qa", :key="idx", style={ 'margin-top': '8px' })
+          //- 题目区
           p(v-if="qa.type !== 'input'")
            span {{ idx + 1 }}.&nbsp;
            span {{ qa.question }}
@@ -28,6 +29,7 @@
               span(v-if="q") {{ q }}
               el-input(v-else, v-model="qa.player[(idx2 - 1) / 2]")
             span &nbsp;({{ qa.score }}分)
+          //- 选项区
           div(style={ 'margin-left': '20px' })
             div(v-if="qa.type === 'radio'")
               el-radio-group(v-model="qa.player")
