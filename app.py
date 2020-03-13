@@ -66,6 +66,9 @@ def req_list() -> dict:
         .offset((page - 1) * page_size) \
         .all()
 
+    for player in apply_players:
+        player.password = None
+
     return success(pager_data(page, count, apply_players, page_size))
 
 

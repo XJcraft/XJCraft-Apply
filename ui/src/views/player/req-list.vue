@@ -13,7 +13,6 @@
       @cell-dblclick="row => row.edit = true"
     )
       el-table-column(label="玩家名", prop="player_name", align="center")
-      el-table-column(label="密码", prop="password", align="center")
       el-table-column(label="申请时间", align="center")
         template(slot-scope="{row}")
           span {{ row.req_time | timestampFilter }}
