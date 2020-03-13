@@ -6,13 +6,15 @@
 
       el-steps(style={ width: '520px', margin: '0 auto' }, :active="step", finish-status="success")
         el-step(title="阅读规则")
-        el-step(title="小测验")
+        el-step(title="入服测试")
         el-step(title="提交申请")
         el-step(title="完成申请")
 
       div.paddintop(v-if="step === 0", align="center")
         div
+          span 你好，欢迎来到XJcraft！
           span 请下载并阅读规则哟(提取码 hvcn)
+
         div(style={ 'margin-top': '32px' })
           el-button(:disabled="step0.step >= 1 && step0.step < step0.waitTime", @click="clickStep0") {{ step0.btnName }}
 
@@ -177,70 +179,395 @@ export default {
       step1: {
         // 题目
         qa: [
+//          { // 单选题
+//            type: 'radio',
+//            question: '单选题 - 合成一个工作台需要几个木板？',
+//            answer: [
+//              '1',
+//              '2',
+//              '3',
+//              '4'
+//            ],
+//            score: 5,
+//            correct: 3,
+//            player: -1
+//          },
+//          { // 多选题
+//            type: 'checkbox',
+//            question: '多选题 - 哪些是合成信标需要的材料？',
+//            answer: [
+//              '沙子',
+//              '黑曜石',
+//              '水桶',
+//              '玻璃'
+//            ],
+//            score: 5,
+//            correct: [1, 3],
+//            player: []
+//          },
+//          { // 判断题
+//            type: 'switch',
+//            question: '判断题 - 在服务器里可以随便熊',
+//            score: 5,
+//            correct: false,
+//            player: void 0
+//          },
+//          { // 判断题，自定义错误和正确的内容，第一个对应 false，第二个对应 true
+//            type: 'switch',
+//            question: '判断题 - 服务器里可以熊么？',
+//            answer: ['不可以', '可以'],
+//            score: 5,
+//            correct: false,
+//            player: void 0
+//          },
+//          { // 填空题
+//            type: 'input',
+//            // 注意，最后一个空就在结尾时，即使后面什么都没有，也要写点什么，比如句号，甚至一个空字符串: ''
+//            // 同理，第一个空在开头时，前面也要写点什么，哪怕是个空字符串
+//            question: ['填空题 - 合成一个信标需要', '个黑曜石、', '个玻璃、以及一个', '。'],
+//            score: 5,
+//            correct: [
+//              // 每个数组是一个空的答案，填里面任意一个都算对，判题的时候会自动去掉两边的空格，因此答案里也不要带两边空格
+//              // 对于字母，会忽略大小写
+//              ['3', '三'],
+//              ['5', '五'],
+//              ['下界之星', '星星', 'Nether Star', 'NetherStar', 'Star']
+//            ],
+//            player: []
+//          },
+          // 以上为示例，问题请参照上面的往后加
+
           { // 单选题
             type: 'radio',
-            question: '单选题 - 合成一个工作台需要几个木板？',
+            question: '1.	Minecraft是一个（ ）游戏',
             answer: [
-              '1',
-              '2',
-              '3',
-              '4'
+              'A.Role playing Game' ,
+              'B.Sandbox Game',
+              'C.Shooting Game',
+              'D.Love Game'
             ],
-            score: 5,
-            correct: 3,
+            score: 4,
+            correct: 1,
+            player: -1
+          },
+          { // 单选题
+            type: 'radio',
+            question: '2.	Minecraft 游戏模式有（ ）种',
+            answer: [
+              'A.3',
+              'B.4',
+              'C.5',
+              'D.6'
+            ],
+            score: 4,
+            correct: 2,
+            player: -1
+          },
+          { // 单选题
+            type: 'radio',
+            question: '3.	进入生存模式的第一件事是（ ）',
+            answer: [
+              'A.看风景',
+              'B.去玩水',
+              'C.撸木头',
+              'D.跳山谷'
+            ],
+            score: 4,
+            correct: 2,
+            player: -1
+          },
+          { // 单选题
+            type: 'radio',
+            question: '4.	有时可以增加稀有掉落的附魔是？',
+            answer: [
+              'A.时运',
+              'B.抢夺',
+              'C.海之眷顾',
+              'D.效率'
+            ],
+            score: 4,
+            correct: 0,
+            player: -1
+          },
+          { // 单选题
+            type: 'radio',
+            question: '5.	去地狱需要什么？',
+            answer: [
+              'A.自杀',
+              'B.黑曜石',
+              'C.钻石块',
+              'D.地狱岩'
+            ],
+            score: 4,
+            correct: 1,
+            player: -1
+          },
+          { // 单选题
+            type: 'radio',
+            question: '6.	云的高度是？',
+            answer: [
+              'A.128-156',
+              'B.108-112',
+              'C.100-104',
+              'D.126-140'
+            ],
+            score: 4,
+            correct: 1,
+            player: -1
+          },
+          { // 单选题
+            type: 'radio',
+            question: '7.	下面哪个物品不能作为燃料？',
+            answer: [
+              'A.木板',
+              'B.橡木',
+              'C.烈焰棒',
+              'D.木棍'
+            ],
+            score: 4,
+            correct: 1,
+            player: -1
+          },
+          { // 单选题
+            type: 'radio',
+            question: '8.	玩家有几颗心？',
+            answer: [
+              'A.5',
+              'B.10',
+              'C.15',
+              'D.20'
+            ],
+            score: 4,
+            correct: 1,
             player: -1
           },
           { // 多选题
             type: 'checkbox',
-            question: '多选题 - 哪些是合成信标需要的材料？',
+            question: '9.	Minecraft里交通工具有（ ）（多选）',
             answer: [
-              '沙子',
-              '黑曜石',
-              '水桶',
-              '玻璃'
+              'A.猪',
+              'B.船',
+              'C.马',
+              'D.羊'
             ],
-            score: 5,
-            correct: [1, 3],
+            score: 4,
+            correct: [0,1,2],
             player: []
           },
-          { // 判断题
-            type: 'switch',
-            question: '判断题 - 在服务器里可以随便熊',
-            score: 5,
-            correct: false,
-            player: void 0
-          },
-          { // 判断题，自定义错误和正确的内容，第一个对应 false，第二个对应 true
-            type: 'switch',
-            question: '判断题 - 服务器里可以熊么？',
-            answer: ['不可以', '可以'],
-            score: 5,
-            correct: false,
-            player: void 0
-          },
-          { // 填空题
-            type: 'input',
-            // 注意，最后一个空就在结尾时，即使后面什么都没有，也要写点什么，比如句号，甚至一个空字符串: ''
-            // 同理，第一个空在开头时，前面也要写点什么，哪怕是个空字符串
-            question: ['填空题 - 合成一个信标需要', '个黑曜石、', '个玻璃、以及一个', '。'],
-            score: 5,
-            correct: [
-              // 每个数组是一个空的答案，填里面任意一个都算对，判题的时候会自动去掉两边的空格，因此答案里也不要带两边空格
-              // 对于字母，会忽略大小写
-              ['3', '三'],
-              ['5', '五'],
-              ['下界之星', '星星', 'Nether Star', 'NetherStar', 'Star']
+          { // 单选题
+            type: 'radio',
+            question: '10. 染料有多少种？',
+            answer: [
+              'A.13',
+              'B.14',
+              'C.15',
+              'D.16'
             ],
+            score: 4,
+            correct: 2,
+            player: -1
+          },
+          { // 单选题
+            type: 'radio',
+            question: '11. 充能苦力怕需要对苦力怕做什么？',
+            answer: [
+              'A.红石充能',
+              'B.被雷劈中',
+              'C.用带有火焰附加的钻石剑劈',
+              'D.诱导海底守卫攻击'
+
+            ],
+            score: 4,
+            correct: 1,
+            player: -1
+          },
+          { // 单选题
+            type: 'radio',
+            question: '12.	恶魂的碰撞箱大小是？',
+            answer: [
+              'A.4*4*4',
+              'B.5*5*5',
+              'C.4*4*5',
+              'D.5*5*4'
+            ],
+            score: 4,
+            correct: 1,
+            player: -1
+          },
+          { // 单选题
+            type: 'radio',
+            question: '13.	蜘蛛在亮度低于多少时会主动攻击玩家？',
+            answer: [
+              'A.3',
+              'B.7',
+              'C.10',
+              'D.一直会攻击，与亮度无关'
+            ],
+            score: 4,
+            correct: 2,
+            player: -1
+          },
+          { // 多选题
+            type: 'checkbox',
+            question: '14.	僵尸的掉落物有（ ）（多选）',
+            answer: [
+              'A.腐肉',
+              'B.铁',
+              'C.骨头',
+              'D.经验球'
+            ],
+            score: 4,
+            correct: [0,1,3],
             player: []
-          }
-
-          // 以上为示例，问题请参照上面的往后加
-
+          },
+          { // 单选题
+            type: 'radio',
+            question: '15.	做一套服装（头盔，盔甲，裤子和鞋）需要多少单位物品？',
+            answer: [
+              'A.23',
+              'B.24',
+              'C.25',
+              'D.26'
+            ],
+            score: 4,
+            correct: 2,
+            player: -1
+          },
+          { // 单选题
+            type: 'radio',
+            question: '16.	粘土块在什么地方挖掘？',
+            answer: [
+              'A.沼泽区',
+              'B.深海区',
+              'C.浅水区',
+              'D.沙漠区'
+            ],
+            score: 4,
+            correct: 2,
+            player: -1
+          },
+          { // 单选题
+            type: 'radio',
+            question: '17.	下列什么物品可以用生存模式得到？',
+            answer: [
+              'A.苦力怕头',
+              'B.基岩',
+              'C.附魔之瓶',
+              'D.命令方块'
+            ],
+            score: 4,
+            correct: 0,
+            player: -1
+          },
+          { // 单选题
+            type: 'radio',
+            question: '18.	没有使用实体材质的技术性方块是？',
+            answer: [
+              'A.下界传送门方块',
+              'B.末地传送门方块',
+              'C.发光的黑曜石',
+              'D.游戏更新方块'
+            ],
+            score: 4,
+            correct: 1,
+            player: -1
+          },
+          { // 单选题
+            type: 'radio',
+            question: '19.	以下选项哪一个是中立性生物？',
+            answer: [
+              'A.海豚',
+              'B.僵尸',
+              'C.村民',
+              'D.猫咪'
+            ],
+            score: 4,
+            correct: 0,
+            player: -1
+          },
+          { // 单选题
+            type: 'radio',
+            question: '20.	重生末影龙会顺带重生？',
+            answer: [
+              'A.末影沙',
+              'B.末影床',
+              'C.末影水晶',
+              'D.末影人'
+            ],
+            score: 4,
+            correct: 2,
+            player: -1
+          },
+          { // 单选题
+            type: 'radio',
+            question: '21.	从哪里修改群名片？',
+            answer: [
+              'A.QQ昵称',
+              'B.群设置',
+              'C.个人资料',
+              'D.查找'
+            ],
+            score: 4,
+            correct: 1,
+            player: -1
+          },
+          { // 单选题
+            type: 'radio',
+            question: '22.	群里的文件在哪里？',
+            answer: [
+              'A.群公告',
+              'B.群相册',
+              'C.群文件',
+              'D.群应用'
+            ],
+            score: 4,
+            correct: 2,
+            player: -1
+          },
+          { // 多选题
+            type: 'radio',
+            question: '23.	QQ群普通成员不可以看到什么？',
+            answer: [
+              'A.	进群时间',
+              'B.	发言数量',
+              'C.	成员分布',
+              'D.	性别'
+            ],
+            score: 4,
+            correct: 1,
+            player: -1
+          },
+          { // 多选题
+            type: 'checkbox',
+            question: '24.	Pdf格式的文件用什么打开？（多选）',
+            answer: [
+              'A.	JisuPdf',
+              'B.	Abode Reader',
+              'C.	记事本',
+              'D.	Microsoft Office Word'
+            ],
+            score: 4,
+            correct: [0,1,3],
+            player: []
+          },
+          { // 单选题
+            type: 'radio',
+            question: '25.	Pdf的文件可以修改什么？',
+            answer: [
+              'A.文件名',
+              'B.文件内容',
+              'C.文件引用',
+              'D.文件格式'
+            ],
+            score: 4,
+            correct: 0,
+            player: -1
+          },
         ],
         // 所有题目总分数(自动计算)
         totalScore: -1,
         // 最低多少分可以过
-        minScore: 20,
+        minScore: 80,
         btnName: '答题完毕，下一步',
         wait: 0
       },
