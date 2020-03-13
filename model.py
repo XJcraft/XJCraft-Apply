@@ -40,5 +40,15 @@ class ApplyPlayer(db.Model, ModelMixin):
     op_name = db.Column(db.String(16))
 
 
+class CrazyLoginAccount(db.Model, ModelMixin):
+    __tablename__ = 'CrazyLogin_accounts'
+    name = db.Column(db.String(255), primary_key=True)
+    password = db.Column(db.String(255, collation='NOCASE'), primary_key=True)
+    ips = db.Column(db.Text, primary_key=True)
+    lastAction = db.Column(db.DateTime, primary_key=True)
+    loginFails = db.Column(db.Integer, primary_key=True)
+    passwordExpired = db.Column(db.Boolean, primary_key=True)
+
+
 def init():
     pass

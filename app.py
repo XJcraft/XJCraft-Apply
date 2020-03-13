@@ -3,7 +3,7 @@
 import math
 from datetime import datetime
 from webbase import app, db, transactional
-from model import ApplyOP, ApplyPlayer, ApplyStatus, ApplyType
+from model import ApplyOP, ApplyPlayer, ApplyStatus, ApplyType, CrazyLoginAccount
 from util import valid_json, valid_not_blank, valid_regexp, get_ip, auth, success, fail, pager_data
 from flask import session, request
 from sqlalchemy import func
@@ -61,6 +61,7 @@ def req_list() -> dict:
     page: int = max(1, min(page, math.ceil(count / page_size)))
 
     apply_players: list = ApplyPlayer.query \
+        .order_by(ApplyPlayer.req_time.desc()) \
         .limit(page_size) \
         .offset((page - 1) * page_size) \
         .all()
@@ -93,13 +94,30 @@ def apply() -> dict:
     elif player.status != ApplyStatus.NEW:
         return fail("此玩家已审核过")
 
+    if result is ApplyStatus.ACCEPT:
+        account: CrazyLoginAccount = CrazyLoginAccount.query \
+            .filter_by(name=json_data["player_name"]) \
+            .first()
+        if account:
+            return fail("玩家名已存在")  # TODO 未来允许 OP 帮助改名
+
     # 更新结果
     player.status = result.name
     player.apply_time = datetime.now()
     player.apply_op = session["username"]
     db.session.add(player)
 
-    # TODO 自动创建账号
+    # 自动创建账号
+    if result is ApplyStatus.ACCEPT:
+        account: CrazyLoginAccount = CrazyLoginAccount(
+            name=player.player_name,
+            password=player.password,
+            ips="",
+            lastAction=datetime.now(),
+            loginFails=0,
+            passwordExpired=False
+        )
+        db.session.add(account)
 
     return success()
 
@@ -121,6 +139,11 @@ def req() -> dict:
         .filter_by(player_name=json_data["player_name"]) \
         .first()
     if player:
+        return fail("玩家名已存在")
+    account: CrazyLoginAccount = CrazyLoginAccount.query \
+        .filter_by(name=json_data["player_name"]) \
+        .first()
+    if account:
         return fail("玩家名已存在")
 
     # QQ 查重
