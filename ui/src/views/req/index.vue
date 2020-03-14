@@ -35,12 +35,12 @@
           div(style={ 'margin-left': '20px' })
             div(v-if="qa.type === 'radio'")
               el-radio-group(v-model="qa.player")
-                div(v-for="(a, idx3) in qa.answer", :key="idx3")
-                  el-radio(:label="idx3", style={ color: '#eee', 'margin-top': '8px' }) {{ a }}
+                div(v-for="idx3 in qa.shuff", :key="idx3")
+                  el-radio(:label="qa.answer[idx3]", style={ color: '#eee', 'margin-top': '8px' }) {{ qa.answer[idx3] }}
             div(v-else-if="qa.type === 'checkbox'")
               el-checkbox-group(v-model="qa.player")
-                div(v-for="(a, idx3) in qa.answer", :key="idx3")
-                  el-checkbox(:label="idx3", style={ color: '#eee', 'margin-top': '8px' }) {{ a }}
+                div(v-for="idx4 in qa.shuff", :key="idx4")
+                  el-checkbox(:label="qa.answer[idx4]", style={ color: '#eee', 'margin-top': '8px' }) {{ qa.answer[idx4] }}
             div(v-else-if="qa.type === 'switch'")
               el-radio-group(v-model="qa.player")
                 el-radio(:label="false", style={ color: '#eee', 'margin-top': '8px' }) {{ (qa.answer && qa.answer[0]) || '错误' }}
@@ -179,76 +179,75 @@ export default {
       step1: {
         // 题目
         qa: [
-//          { // 单选题
-//            type: 'radio',
-//            question: '单选题 - 合成一个工作台需要几个木板？',
-//            answer: [
-//              '1',
-//              '2',
-//              '3',
-//              '4'
-//            ],
-//            score: 5,
-//            correct: 3,
-//            player: -1
-//          },
-//          { // 多选题
-//            type: 'checkbox',
-//            question: '多选题 - 哪些是合成信标需要的材料？',
-//            answer: [
-//              '沙子',
-//              '黑曜石',
-//              '水桶',
-//              '玻璃'
-//            ],
-//            score: 5,
-//            correct: [1, 3],
-//            player: []
-//          },
-//          { // 判断题
-//            type: 'switch',
-//            question: '判断题 - 在服务器里可以随便熊',
-//            score: 5,
-//            correct: false,
-//            player: void 0
-//          },
-//          { // 判断题，自定义错误和正确的内容，第一个对应 false，第二个对应 true
-//            type: 'switch',
-//            question: '判断题 - 服务器里可以熊么？',
-//            answer: ['不可以', '可以'],
-//            score: 5,
-//            correct: false,
-//            player: void 0
-//          },
-//          { // 填空题
-//            type: 'input',
-//            // 注意，最后一个空就在结尾时，即使后面什么都没有，也要写点什么，比如句号，甚至一个空字符串: ''
-//            // 同理，第一个空在开头时，前面也要写点什么，哪怕是个空字符串
-//            question: ['填空题 - 合成一个信标需要', '个黑曜石、', '个玻璃、以及一个', '。'],
-//            score: 5,
-//            correct: [
-//              // 每个数组是一个空的答案，填里面任意一个都算对，判题的时候会自动去掉两边的空格，因此答案里也不要带两边空格
-//              // 对于字母，会忽略大小写
-//              ['3', '三'],
-//              ['5', '五'],
-//              ['下界之星', '星星', 'Nether Star', 'NetherStar', 'Star']
-//            ],
-//            player: []
-//          },
+        //  { // 单选题
+        //    type: 'radio',
+        //    question: '单选题 - 合成一个工作台需要几个木板？',
+        //    answer: [
+        //      '1',
+        //      '2',
+        //      '3',
+        //      '4'
+        //    ],
+        //    score: 5,
+        //    correct: 3,
+        //    player: -1
+        //  },
+        //  { // 多选题
+        //    type: 'checkbox',
+        //    question: '多选题 - 哪些是合成信标需要的材料？',
+        //    answer: [
+        //      '沙子',
+        //      '黑曜石',
+        //      '水桶',
+        //      '玻璃'
+        //    ],
+        //    score: 5,
+        //    correct: [1, 3],
+        //    player: []
+        //  },
+        //  { // 判断题
+        //    type: 'switch',
+        //    question: '判断题 - 在服务器里可以随便熊',
+        //    score: 5,
+        //    correct: false,
+        //    player: void 0
+        //  },
+        //  { // 判断题，自定义错误和正确的内容，第一个对应 false，第二个对应 true
+        //    type: 'switch',
+        //    question: '判断题 - 服务器里可以熊么？',
+        //    answer: ['不可以', '可以'],
+        //    score: 5,
+        //    correct: false,
+        //    player: void 0
+        //  },
+        //  { // 填空题
+        //    type: 'input',
+        //    // 注意，最后一个空就在结尾时，即使后面什么都没有，也要写点什么，比如句号，甚至一个空字符串: ''
+        //    // 同理，第一个空在开头时，前面也要写点什么，哪怕是个空字符串
+        //    question: ['填空题 - 合成一个信标需要', '个黑曜石、', '个玻璃、以及一个', '。'],
+        //    score: 5,
+        //    correct: [
+        //      // 每个数组是一个空的答案，填里面任意一个都算对，判题的时候会自动去掉两边的空格，因此答案里也不要带两边空格
+        //      // 对于字母，会忽略大小写
+        //      ['3', '三'],
+        //      ['5', '五'],
+        //      ['下界之星', '星星', 'Nether Star', 'NetherStar', 'Star']
+        //    ],
+        //    player: []
+        //  },
           // 以上为示例，问题请参照上面的往后加
 
           { // 单选题
             type: 'radio',
             question: '1.	Minecraft是一个（ ）游戏',
             answer: [
-              'A.Role playing Game' ,
+              'A.Role playing Game',
               'B.Sandbox Game',
               'C.Shooting Game',
               'D.Love Game'
             ],
             score: 4,
-            correct: 1,
-            player: -1
+            correct: 1
           },
           { // 单选题
             type: 'radio',
@@ -260,8 +259,7 @@ export default {
               'D.6'
             ],
             score: 4,
-            correct: 2,
-            player: -1
+            correct: 2
           },
           { // 单选题
             type: 'radio',
@@ -273,8 +271,7 @@ export default {
               'D.跳山谷'
             ],
             score: 4,
-            correct: 2,
-            player: -1
+            correct: 2
           },
           { // 单选题
             type: 'radio',
@@ -286,8 +283,7 @@ export default {
               'D.效率'
             ],
             score: 4,
-            correct: 0,
-            player: -1
+            correct: 0
           },
           { // 单选题
             type: 'radio',
@@ -299,8 +295,7 @@ export default {
               'D.地狱岩'
             ],
             score: 4,
-            correct: 1,
-            player: -1
+            correct: 1
           },
           { // 单选题
             type: 'radio',
@@ -312,8 +307,7 @@ export default {
               'D.126-140'
             ],
             score: 4,
-            correct: 1,
-            player: -1
+            correct: 1
           },
           { // 单选题
             type: 'radio',
@@ -325,8 +319,7 @@ export default {
               'D.木棍'
             ],
             score: 4,
-            correct: 1,
-            player: -1
+            correct: 1
           },
           { // 单选题
             type: 'radio',
@@ -338,8 +331,7 @@ export default {
               'D.20'
             ],
             score: 4,
-            correct: 1,
-            player: -1
+            correct: 1
           },
           { // 多选题
             type: 'checkbox',
@@ -351,8 +343,7 @@ export default {
               'D.羊'
             ],
             score: 4,
-            correct: [0,1,2],
-            player: []
+            correct: [0, 1, 2]
           },
           { // 单选题
             type: 'radio',
@@ -364,8 +355,7 @@ export default {
               'D.16'
             ],
             score: 4,
-            correct: 2,
-            player: -1
+            correct: 2
           },
           { // 单选题
             type: 'radio',
@@ -378,8 +368,7 @@ export default {
 
             ],
             score: 4,
-            correct: 1,
-            player: -1
+            correct: 1
           },
           { // 单选题
             type: 'radio',
@@ -391,8 +380,7 @@ export default {
               'D.5*5*4'
             ],
             score: 4,
-            correct: 1,
-            player: -1
+            correct: 1
           },
           { // 单选题
             type: 'radio',
@@ -404,8 +392,7 @@ export default {
               'D.一直会攻击，与亮度无关'
             ],
             score: 4,
-            correct: 2,
-            player: -1
+            correct: 2
           },
           { // 多选题
             type: 'checkbox',
@@ -417,8 +404,7 @@ export default {
               'D.经验球'
             ],
             score: 4,
-            correct: [0,1,3],
-            player: []
+            correct: [0, 1, 3]
           },
           { // 单选题
             type: 'radio',
@@ -430,8 +416,7 @@ export default {
               'D.26'
             ],
             score: 4,
-            correct: 2,
-            player: -1
+            correct: 2
           },
           { // 单选题
             type: 'radio',
@@ -443,8 +428,7 @@ export default {
               'D.沙漠区'
             ],
             score: 4,
-            correct: 2,
-            player: -1
+            correct: 2
           },
           { // 单选题
             type: 'radio',
@@ -456,8 +440,7 @@ export default {
               'D.命令方块'
             ],
             score: 4,
-            correct: 0,
-            player: -1
+            correct: 0
           },
           { // 单选题
             type: 'radio',
@@ -469,8 +452,7 @@ export default {
               'D.游戏更新方块'
             ],
             score: 4,
-            correct: 1,
-            player: -1
+            correct: 1
           },
           { // 单选题
             type: 'radio',
@@ -482,8 +464,7 @@ export default {
               'D.猫咪'
             ],
             score: 4,
-            correct: 0,
-            player: -1
+            correct: 0
           },
           { // 单选题
             type: 'radio',
@@ -495,8 +476,7 @@ export default {
               'D.末影人'
             ],
             score: 4,
-            correct: 2,
-            player: -1
+            correct: 2
           },
           { // 单选题
             type: 'radio',
@@ -508,8 +488,7 @@ export default {
               'D.查找'
             ],
             score: 4,
-            correct: 1,
-            player: -1
+            correct: 1
           },
           { // 单选题
             type: 'radio',
@@ -521,8 +500,7 @@ export default {
               'D.群应用'
             ],
             score: 4,
-            correct: 2,
-            player: -1
+            correct: 2
           },
           { // 多选题
             type: 'radio',
@@ -534,8 +512,7 @@ export default {
               'D.	性别'
             ],
             score: 4,
-            correct: 1,
-            player: -1
+            correct: 1
           },
           { // 多选题
             type: 'checkbox',
@@ -547,8 +524,7 @@ export default {
               'D.	Microsoft Office Word'
             ],
             score: 4,
-            correct: [0,1,3],
-            player: []
+            correct: [0, 1, 3]
           },
           { // 单选题
             type: 'radio',
@@ -560,9 +536,8 @@ export default {
               'D.文件格式'
             ],
             score: 4,
-            correct: 0,
-            player: -1
-          },
+            correct: 0
+          }
         ],
         // 所有题目总分数(自动计算)
         totalScore: -1,
@@ -596,14 +571,55 @@ export default {
     let totalScore = 0
     for (let i = this.step1.qa.length - 1; i >= 0; i--) {
       const qa = this.step1.qa[i]
+
+      // 总分计算
       totalScore += qa.score
+
+      // input 特殊处理
       if (qa.type === 'input') {
         for (let j = qa.question.length - 1; j >= 1; j--) {
           qa.question.splice(j, 0, void 0)
         }
       }
+
+      // player 字段
+      switch (qa.type) {
+        case 'radio':
+          qa.player = -1
+          break
+        case 'checkbox':
+          qa.player = []
+          break
+        case 'switch':
+          qa.player = void 0
+          break
+        case 'input':
+          qa.player = []
+          break
+      }
+
+      // shuff
+      switch (qa.type) {
+        case 'radio':
+        case 'checkbox':
+          qa.shuff = []
+          break
+      }
+      if (qa.shuff) {
+        const len = qa.answer.length
+        for (let i = 0; i < len; i++) {
+          qa.shuff.push(i)
+        }
+        for (let i = 0; i < len; i++) {
+          const j = Math.floor(Math.random() * (len - i) + i)
+          const tmp = qa.shuff[j]
+          qa.shuff[j] = qa.shuff[i]
+          qa.shuff[i] = tmp
+        }
+      }
     }
     this.totalScore = totalScore
+    this.$forceUpdate()
 
     console.log('总分: ' + totalScore)
   },
