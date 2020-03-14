@@ -32,15 +32,16 @@
               el-input(v-else, v-model="qa.player[(idx2 - 1) / 2]")
             span &nbsp;({{ qa.score }}分)
           //- 选项区
+          //- TODO 加个 debug 显示正确答案？
           div(style={ 'margin-left': '20px' })
             div(v-if="qa.type === 'radio'")
               el-radio-group(v-model="qa.player")
                 div(v-for="idx3 in qa.shuff", :key="idx3")
-                  el-radio(:label="qa.answer[idx3]", style={ color: '#eee', 'margin-top': '8px' }) {{ qa.answer[idx3] }}
+                  el-radio(:label="idx3", style={ color: '#eee', 'margin-top': '8px' }) {{ qa.answer[idx3] }}
             div(v-else-if="qa.type === 'checkbox'")
               el-checkbox-group(v-model="qa.player")
-                div(v-for="idx4 in qa.shuff", :key="idx4")
-                  el-checkbox(:label="qa.answer[idx4]", style={ color: '#eee', 'margin-top': '8px' }) {{ qa.answer[idx4] }}
+                div(v-for="idx3 in qa.shuff", :key="idx3")
+                  el-checkbox(:label="idx3", style={ color: '#eee', 'margin-top': '8px' }) {{ qa.answer[idx3] }}
             div(v-else-if="qa.type === 'switch'")
               el-radio-group(v-model="qa.player")
                 el-radio(:label="false", style={ color: '#eee', 'margin-top': '8px' }) {{ (qa.answer && qa.answer[0]) || '错误' }}
@@ -189,8 +190,7 @@ export default {
         //      '4'
         //    ],
         //    score: 5,
-        //    correct: 3,
-        //    player: -1
+        //    correct: 3
         //  },
         //  { // 多选题
         //    type: 'checkbox',
@@ -202,23 +202,20 @@ export default {
         //      '玻璃'
         //    ],
         //    score: 5,
-        //    correct: [1, 3],
-        //    player: []
+        //    correct: [1, 3]
         //  },
         //  { // 判断题
         //    type: 'switch',
         //    question: '判断题 - 在服务器里可以随便熊',
         //    score: 5,
-        //    correct: false,
-        //    player: void 0
+        //    correct: false
         //  },
         //  { // 判断题，自定义错误和正确的内容，第一个对应 false，第二个对应 true
         //    type: 'switch',
         //    question: '判断题 - 服务器里可以熊么？',
         //    answer: ['不可以', '可以'],
         //    score: 5,
-        //    correct: false,
-        //    player: void 0
+        //    correct: false
         //  },
         //  { // 填空题
         //    type: 'input',
@@ -232,8 +229,7 @@ export default {
         //      ['3', '三'],
         //      ['5', '五'],
         //      ['下界之星', '星星', 'Nether Star', 'NetherStar', 'Star']
-        //    ],
-        //    player: []
+        //    ]
         //  },
           // 以上为示例，问题请参照上面的往后加
 
