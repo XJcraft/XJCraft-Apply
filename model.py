@@ -45,6 +45,7 @@ class ApplyPlayer(db.Model, ModelMixin):
 class CrazyLoginAccount(db.Model, ModelMixin):
     """
     注意，此表不由本应用创建，字符集和整理算法不可预知，业务里应注意这点
+    尤其注意考虑 _bin 系整理算法时大小写的问题
     """
     __tablename__ = 'CrazyLogin_accounts'
     __table_args__ = {"mysql_charset": "utf8", "mysql_collate": "utf8_general_ci"}

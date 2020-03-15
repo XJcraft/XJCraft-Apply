@@ -144,7 +144,7 @@ def req() -> dict:
     if player:
         return fail("玩家名已存在")
     account: CrazyLoginAccount = CrazyLoginAccount.query \
-        .filter(func.lower(CrazyLoginAccount.name) == player.player_name.lower()) \
+        .filter(func.lower(CrazyLoginAccount.name) == json_data["player_name"].lower()) \
         .first()
     if account:
         return fail("玩家名已存在")
