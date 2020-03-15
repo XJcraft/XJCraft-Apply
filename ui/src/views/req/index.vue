@@ -883,16 +883,16 @@ export default {
       // player 字段
       switch (qa.type) {
         case 'radio':
-          qa.player = -1
+          this.$set(qa,"player", -1)
           break
         case 'checkbox':
-          qa.player = []
+          this.$set(qa,"player", [])
           break
         case 'switch':
-          qa.player = void 0
+          this.$set(qa,"player", void 0)
           break
         case 'input':
-          qa.player = []
+          this.$set(qa,"player", [])
           break
       }
 
@@ -900,7 +900,7 @@ export default {
       switch (qa.type) {
         case 'radio':
         case 'checkbox':
-          qa.shuff = []
+          this.$set(qa,"shuff", [])
           break
       }
       if (qa.shuff) {
@@ -917,7 +917,6 @@ export default {
       }
     }
     this.totalScore = totalScore
-    this.$forceUpdate()
 
     console.log('总分: ' + totalScore)
   },
