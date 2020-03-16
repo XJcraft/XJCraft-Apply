@@ -81,7 +81,6 @@ def apply() -> dict:
     OP 处理玩家申请
     """
     json_data = request.get_json()
-    id = json_data["id"]
     result = ApplyStatus.__members__[json_data["result"]]
 
     if not result or result is ApplyStatus.NEW:
@@ -89,7 +88,7 @@ def apply() -> dict:
 
     # 查出玩家
     player: ApplyPlayer = ApplyPlayer.query \
-        .filter_by(id=id) \
+        .filter_by(id=json_data["id"]) \
         .first()
 
     if not player:
@@ -104,17 +103,20 @@ def apply() -> dict:
         if account:
             return fail("玩家名已存在")  # TODO 未来允许 OP 帮助改名
 
+    pwd = player.password
+
     # 更新结果
     player.status = result.name
     player.apply_time = datetime.now()
     player.apply_op = session["username"]
+    player.password = 'xjcraft'
     db.session.add(player)
 
     # 自动创建账号
     if result is ApplyStatus.ACCEPT:
         account: CrazyLoginAccount = CrazyLoginAccount(
             name=player.player_name,
-            password=player.password,
+            password=pwd,
             ips="",
             lastAction=datetime.now(),
             loginFails=0,
