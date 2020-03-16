@@ -237,10 +237,10 @@ export default {
             type: 'radio',
             question: 'Minecraft是一个（ ）游戏',
             answer: [
-              'A.Role playing Game',
-              'B.Sandbox Game',
-              'C.Shooting Game',
-              'D.Love Game'
+              ' Role playing Game',
+              ' Sandbox Game',
+              ' Shooting Game',
+              ' Love Game'
             ],
             score: 2,
             correct: 1
@@ -249,10 +249,10 @@ export default {
             type: 'radio',
             question: 'Minecraft 游戏模式有（ ）种',
             answer: [
-              'A.3',
-              'B.4',
-              'C.5',
-              'D.6'
+              ' 3',
+              ' 4',
+              ' 5',
+              ' 6'
             ],
             score: 2,
             correct: 2
@@ -261,10 +261,10 @@ export default {
             type: 'checkbox',
             question: '进入生存模式的第一件事是（ ）（多选）',
             answer: [
-              'A.看风景',
-              'B.去玩水',
-              'C.撸木头',
-              'D.跳山谷'
+              ' 看风景',
+              ' 去玩水',
+              ' 撸木头',
+              ' 跳山谷'
             ],
             score: 2,
             correct: [0, 1, 2, 3]
@@ -273,10 +273,10 @@ export default {
             type: 'radio',
             question: '有时可以增加稀有掉落的附魔是？',
             answer: [
-              'A.时运',
-              'B.抢夺',
-              'C.海之眷顾',
-              'D.效率'
+              ' 时运',
+              ' 抢夺',
+              ' 海之眷顾',
+              ' 效率'
             ],
             score: 2,
             correct: 0
@@ -285,10 +285,10 @@ export default {
             type: 'radio',
             question: '去地狱需要什么？',
             answer: [
-              'A.自杀',
-              'B.黑曜石',
-              'C.钻石块',
-              'D.地狱岩'
+              ' 自杀',
+              ' 黑曜石',
+              ' 钻石块',
+              ' 地狱岩'
             ],
             score: 2,
             correct: 1
@@ -297,10 +297,10 @@ export default {
             type: 'radio',
             question: '云的高度是？',
             answer: [
-              'A.128-156',
-              'B.108-112',
-              'C.100-104',
-              'D.126-140'
+              ' 128-156',
+              ' 108-112',
+              ' 100-104',
+              ' 126-140'
             ],
             score: 2,
             correct: 1
@@ -309,10 +309,10 @@ export default {
             type: 'radio',
             question: '下面哪个物品不能作为燃料？',
             answer: [
-              'A.木板',
-              'B.橡木',
-              'C.烈焰棒',
-              'D.海带'
+              ' 木板',
+              ' 橡木',
+              ' 烈焰棒',
+              ' 海带'
             ],
             score: 2,
             correct: 3
@@ -321,10 +321,10 @@ export default {
             type: 'radio',
             question: '玩家有几颗心？',
             answer: [
-              'A.5',
-              'B.10',
-              'C.15',
-              'D.20'
+              ' 5',
+              ' 10',
+              ' 15',
+              ' 20'
             ],
             score: 2,
             correct: 1
@@ -333,10 +333,10 @@ export default {
             type: 'checkbox',
             question: 'Minecraft里交通工具有（ ）（多选）',
             answer: [
-              'A.猪',
-              'B.船',
-              'C.马',
-              'D.羊'
+              ' 猪',
+              ' 船',
+              ' 马',
+              ' 羊'
             ],
             score: 2,
             correct: [0, 1, 2]
@@ -345,10 +345,10 @@ export default {
             type: 'radio',
             question: '染料有多少种？',
             answer: [
-              'A.13',
-              'B.14',
-              'C.15',
-              'D.16'
+              ' 13',
+              ' 14',
+              ' 15',
+              ' 16'
             ],
             score: 2,
             correct: 2
@@ -357,10 +357,10 @@ export default {
             type: 'radio',
             question: '充能苦力怕需要对苦力怕做什么？',
             answer: [
-              'A.红石充能',
-              'B.被雷劈中',
-              'C.用带有火焰附加的钻石剑劈',
-              'D.诱导海底守卫攻击'
+              ' 红石充能',
+              ' 被雷劈中',
+              ' 用带有火焰附加的钻石剑劈',
+              ' 诱导海底守卫攻击'
 
             ],
             score: 2,
@@ -370,10 +370,10 @@ export default {
             type: 'radio',
             question: '恶魂的碰撞箱大小是？',
             answer: [
-              'A.4*4*4',
-              'B.5*5*5',
-              'C.4*4*5',
-              'D.5*5*4'
+              ' 4*4*4',
+              ' 5*5*5',
+              ' 4*4*5',
+              ' 5*5*4'
             ],
             score: 2,
             correct: 1
@@ -382,10 +382,10 @@ export default {
             type: 'radio',
             question: '蜘蛛在亮度低于多少时会主动攻击玩家？',
             answer: [
-              'A.3',
-              'B.7',
-              'C.10',
-              'D.一直会攻击，与亮度无关'
+              ' 3',
+              ' 7',
+              ' 10',
+              ' 一直会攻击，与亮度无关'
             ],
             score: 2,
             correct: 2
@@ -394,10 +394,10 @@ export default {
             type: 'checkbox',
             question: '僵尸的掉落物有（ ）（多选）',
             answer: [
-              'A.腐肉',
-              'B.铁',
-              'C.骨头',
-              'D.经验球'
+              ' 腐肉',
+              ' 铁',
+              ' 骨头',
+              ' 经验球'
             ],
             score: 2,
             correct: [0, 1, 3]
@@ -406,10 +406,10 @@ export default {
             type: 'radio',
             question: '做一套服装（头盔，盔甲，裤子和鞋）需要多少单位物品？',
             answer: [
-              'A.23',
-              'B.24',
-              'C.25',
-              'D.26'
+              ' 23',
+              ' 24',
+              ' 25',
+              ' 26'
             ],
             score: 2,
             correct: 2
@@ -418,10 +418,10 @@ export default {
             type: 'radio',
             question: '粘土块在什么地方挖掘？',
             answer: [
-              'A.沼泽区',
-              'B.深海区',
-              'C.浅水区',
-              'D.沙漠区'
+              ' 沼泽区',
+              ' 深海区',
+              ' 浅水区',
+              ' 沙漠区'
             ],
             score: 2,
             correct: 2
@@ -430,10 +430,10 @@ export default {
             type: 'radio',
             question: '下列什么物品可以用生存模式得到？',
             answer: [
-              'A.苦力怕头',
-              'B.基岩',
-              'C.耕地',
-              'D.命令方块'
+              ' 苦力怕头',
+              ' 基岩',
+              ' 耕地',
+              ' 命令方块'
             ],
             score: 2,
             correct: 0
@@ -442,10 +442,10 @@ export default {
             type: 'radio',
             question: '没有使用实体材质的技术性方块是？',
             answer: [
-              'A.下界传送门方块',
-              'B.末地传送门方块',
-              'C.发光的黑曜石',
-              'D.游戏更新方块'
+              ' 下界传送门方块',
+              ' 末地传送门方块',
+              ' 发光的黑曜石',
+              ' 游戏更新方块'
             ],
             score: 2,
             correct: 1
@@ -454,10 +454,10 @@ export default {
             type: 'radio',
             question: '以下选项哪一个是效用性生物？',
             answer: [
-              'A.海豚',
-              'B.僵尸',
-              'C.村民',
-              'D.猫咪'
+              ' 海豚',
+              ' 僵尸',
+              ' 村民',
+              ' 猫咪'
             ],
             score: 2,
             correct: 0
@@ -466,10 +466,10 @@ export default {
             type: 'radio',
             question: '重生末影龙会顺带重生？',
             answer: [
-              'A.末影沙',
-              'B.末影床',
-              'C.末影水晶',
-              'D.末影人'
+              ' 末影沙',
+              ' 末影床',
+              ' 末影水晶',
+              ' 末影人'
             ],
             score: 2,
             correct: 2
@@ -478,10 +478,10 @@ export default {
             type: 'radio',
             question: '从哪里修改群名片？',
             answer: [
-              'A.QQ昵称',
-              'B.群设置',
-              'C.个人资料',
-              'D.查找'
+              ' QQ昵称',
+              ' 群设置',
+              ' 个人资料',
+              ' 查找'
             ],
             score: 2,
             correct: 1
@@ -490,10 +490,10 @@ export default {
             type: 'radio',
             question: '群里的文件在哪里？',
             answer: [
-              'A.群公告',
-              'B.群相册',
-              'C.群文件',
-              'D.群应用'
+              ' 群公告',
+              ' 群相册',
+              ' 群文件',
+              ' 群应用'
             ],
             score: 2,
             correct: 2
@@ -502,10 +502,10 @@ export default {
             type: 'radio',
             question: 'QQ群普通成员不可以看到什么？',
             answer: [
-              'A.	进群时间',
-              'B.	发言数量',
-              'C.	成员分布',
-              'D.	性别'
+              ' 进群时间',
+              ' 发言数量',
+              ' 成员分布',
+              ' 性别'
             ],
             score: 2,
             correct: 1
@@ -514,10 +514,10 @@ export default {
             type: 'checkbox',
             question: 'Pdf格式的文件用什么打开？（多选）',
             answer: [
-              'A.	JisuPdf',
-              'B.	Abode Reader',
-              'C.	记事本',
-              'D.	Microsoft Office Word'
+              ' JisuPdf',
+              ' Abode Reader',
+              ' 记事本',
+              ' Microsoft Office Word'
             ],
             score: 2,
             correct: [0, 1, 3]
@@ -526,10 +526,10 @@ export default {
             type: 'checkbox',
             question: 'Pdf的文件可以修改什么？（多选）',
             answer: [
-              'A.文件名',
-              'B.文件内容',
-              'C.文件引用',
-              'D.文件格式'
+              ' 文件名',
+              ' 文件内容',
+              ' 文件引用',
+              ' 文件格式'
             ],
             score: 2,
             correct: [0, 1, 2, 3]
@@ -538,10 +538,10 @@ export default {
             type: 'radio',
             question: '有新人加入问服务器IP，我应该怎么办',
             answer: [
-              'A.让他看群公告',
-              'B.在群里发布IP',
-              'C.私聊告诉他IP',
-              'D.让他爆照来换IP'
+              ' 让他看群公告',
+              ' 在群里发布IP',
+              ' 私聊告诉他IP',
+              ' 让他爆照来换IP'
             ],
             score: 2,
             correct: 0
@@ -550,10 +550,10 @@ export default {
             type: 'radio',
             question: '以下行为哪种不可取',
             answer: [
-              'A.劝新玩家过不去时自杀重新开始',
-              'B.拿黑曜石去围住白名玩家的床',
-              'C.利用迷宫特性过迷宫',
-              'D.直接给新人过考核的提示'
+              ' 劝新玩家过不去时自杀重新开始',
+              ' 拿黑曜石去围住白名玩家的床',
+              ' 利用迷宫特性过迷宫',
+              ' 直接给新人过考核的提示'
             ],
             score: 2,
             correct: 3
@@ -562,10 +562,10 @@ export default {
             type: 'radio',
             question: '过生存考核需要什么',
             answer: [
-              'A.铁套',
-              'B.30颗钻石',
-              'C.钻石盔甲',
-              'D.钻石盔甲+钻石镐+钻石剑'
+              ' 铁套',
+              ' 30颗钻石',
+              ' 钻石盔甲',
+              ' 钻石盔甲+钻石镐+钻石剑'
             ],
             score: 2,
             correct: 2
@@ -574,10 +574,10 @@ export default {
             type: 'radio',
             question: '过了考核之后，以下那种行为是允许的',
             answer: [
-              'A.改造新手宿舍',
-              'B.去粘土山小镇挖粘土，去蘑菇岛小镇挖菌丝',
-              'C.去公共小黑塔拿珍珠',
-              'D.去蘑菇岛小镇建刷珊瑚农场'
+              ' 改造新手宿舍',
+              ' 去粘土山小镇挖粘土，去蘑菇岛小镇挖菌丝',
+              ' 去公共小黑塔拿珍珠',
+              ' 去蘑菇岛小镇建刷珊瑚农场'
             ],
             score: 2,
             correct: 2
@@ -586,10 +586,10 @@ export default {
             type: 'radio',
             question: '以下哪种行为会被OP提醒改造',
             answer: [
-              'A.带开关的高频红石电路',
-              'B.单一动物超过20只',
-              'C.高空流水',
-              'D.往小镇房子的箱子里放物品'
+              ' 带开关的高频红石电路',
+              ' 单一动物超过20只',
+              ' 高空流水',
+              ' 往小镇房子的箱子里放物品'
             ],
             score: 2,
             correct: 1
@@ -598,10 +598,10 @@ export default {
             type: 'radio',
             question: '当一个玩家在门前写禁止参观，而你执意进去参观之后，你会受到什么惩罚',
             answer: [
-              'A.被ban',
-              'B.被关监狱',
-              'C.在群里公示，并被要求道歉',
-              'D.以上均有可能'
+              ' 被ban',
+              ' 被关监狱',
+              ' 在群里公示，并被要求道歉',
+              ' 以上均有可能'
             ],
             score: 2,
             correct: 3
@@ -610,10 +610,10 @@ export default {
             type: 'checkbox',
             question: '去参观别人机器时，手上突然多了一颗红石，这时候你不该怎么做（多选）',
             answer: [
-              'A.把红石放在玩家基地的箱子里',
-              'B.迅速在群里@该基地玩家，@不出来私聊，私聊不到找OP',
-              'C.带走红石，赔他一颗钻石。',
-              'D.我是红石大佬，我可以修好……'
+              ' 把红石放在玩家基地的箱子里',
+              ' 迅速在群里@该基地玩家，@不出来私聊，私聊不到找OP',
+              ' 带走红石，赔他一颗钻石。',
+              ' 我是红石大佬，我可以修好……'
             ],
             score: 2,
             correct: [0, 2]
@@ -622,10 +622,10 @@ export default {
             type: 'radio',
             question: '遇见有名字的僵尸，一下哪种行为是错误的',
             answer: [
-              'A.服务器装了插件，这是boss级僵尸，打死就行了',
-              'B.溜之大吉，不做任何动作',
-              'C.把僵尸围起来',
-              'D.在服里喊人来围观'
+              ' 服务器装了插件，这是boss级僵尸，打死就行了',
+              ' 溜之大吉，不做任何动作',
+              ' 把僵尸围起来',
+              ' 在服里喊人来围观'
             ],
             score: 2,
             correct: 0
@@ -634,10 +634,10 @@ export default {
             type: 'checkbox',
             question: '在其他玩家没明说的情况下，我可以做什么（多选）',
             answer: [
-              'A.服务器装了插件，这是boss级僵尸，打死就行了',
-              'B.溜之大吉，不做任何动作',
-              'C.把僵尸围起来',
-              'D.在服里喊人来围观'
+              ' 剪玩家基地羊毛',
+              ' 撸玩家基地的土豆，并种上',
+              ' 挤玩家基地的奶牛',
+              ' 使用别人家的村民交易'
             ],
             score: 2,
             correct: [0, 1, 2]
@@ -646,10 +646,10 @@ export default {
             type: 'radio',
             question: '以下哪种行为不会被ban，但是会被人唾弃',
             answer: [
-              'A.偷走其他玩家的物品',
-              'B.用钻石剑击杀绿名玩家',
-              'C.在别人床边放岩浆',
-              'D.在商店反复拿取放入，制造大量CO记录。'
+              ' 偷走其他玩家的物品',
+              ' 用钻石剑击杀绿名玩家',
+              ' 在别人床边放岩浆',
+              ' 在商店反复拿取放入，制造大量CO记录。'
             ],
             score: 2,
             correct: 3
@@ -658,10 +658,10 @@ export default {
             type: 'radio',
             question: '一下那些项条件不是迁出新手宿舍的必备条件',
             answer: [
-              'A.拥有建筑师执照',
-              'B.拥有国债',
-              'C.清空宿舍',
-              'D.往政府大楼投入申请'
+              ' 拥有建筑师执照',
+              ' 拥有国债',
+              ' 清空宿舍',
+              ' 往政府大楼投入申请'
             ],
             score: 2,
             correct: 0
@@ -670,10 +670,10 @@ export default {
             type: 'checkbox',
             question: '蘑菇镇的地皮价格是多少（多选）',
             answer: [
-              'A.1024国债',
-              'B.512国债',
-              'C.768国债',
-              'D.128国债'
+              ' 1024国债',
+              ' 512国债',
+              ' 768国债',
+              ' 128国债'
 
             ],
             score: 2,
@@ -683,10 +683,10 @@ export default {
             type: 'radio',
             question: '服务器商店交易不需要考虑的是',
             answer: [
-              'A.货币类型',
-              'B.商品价格',
-              'C.卖家ID',
-              'D. 卖家的其他要求'
+              ' 货币类型',
+              ' 商品价格',
+              ' 卖家ID',
+              ' 卖家的其他要求'
             ],
             score: 2,
             correct: 2
@@ -695,10 +695,10 @@ export default {
             type: 'radio',
             question: '以下说法正确的是',
             answer: [
-              'A.挖了黑曜石柱子之后必须要打龙恢复',
-              'B.挖得少可以不用打龙',
-              'C.挖主岛末地石可以不用打龙',
-              'D.打龙之后发现末地信标被破坏了，需要找OP来修复他'
+              ' 挖了黑曜石柱子之后必须要打龙恢复',
+              ' 挖得少可以不用打龙',
+              ' 挖主岛末地石可以不用打龙',
+              ' 打龙之后发现末地信标被破坏了，需要找OP来修复他'
             ],
             score: 2,
             correct: 0
@@ -707,10 +707,10 @@ export default {
             type: 'radio',
             question: '被人恶意PVP了怎么办',
             answer: [
-              'A.当然是选择原谅他咯',
-              'B.向OP申述，根据他后续表现来选择ban不ban他 ',
-              'C.不用废话，跟OP说一声之后抄他的家',
-              'D.找人群殴他，堵着他的床杀他'
+              ' 当然是选择原谅他咯',
+              ' 向OP申述，根据他后续表现来选择ban不ban他 ',
+              ' 不用废话，跟OP说一声之后抄他的家',
+              ' 找人群殴他，堵着他的床杀他'
             ],
             score: 2,
             correct: 1
@@ -719,10 +719,10 @@ export default {
             type: 'radio',
             question: '以下哪种命令在服务器不能使用',
             answer: [
-              'A./co i',
-              'B./hat',
-              'C./tpa',
-              'D./xjcraft apply'
+              ' /co i',
+              ' /hat',
+              ' /tpa',
+              ' /xjcraft apply'
             ],
             score: 2,
             correct: 2
@@ -731,10 +731,10 @@ export default {
             type: 'radio',
             question: '以下哪个选项不是服务器专用名词',
             answer: [
-              'A.国债',
-              'B.矿机',
-              'C.股票',
-              'D.坑'
+              ' 国债',
+              ' 矿机',
+              ' 股票',
+              ' 坑'
             ],
             score: 2,
             correct: 2
@@ -743,10 +743,10 @@ export default {
             type: 'checkbox',
             question: '在小镇浏览时突然遇见了苦力怕爆炸，以下那种做法是错误的（多选）',
             answer: [
-              'A.恢复原样',
-              'B.又不是我挖的，不用管。',
-              'C.把现场截图，并告诉附近居民此处需要点亮',
-              'D.不用恢复，把周围用火把插亮就行了',
+              ' 恢复原样',
+              ' 又不是我挖的，不用管。',
+              ' 把现场截图，并告诉附近居民此处需要点亮',
+              ' 不用恢复，把周围用火把插亮就行了',
             ],
             score: 2,
             correct: [1, 3]
@@ -755,10 +755,10 @@ export default {
             type: 'radio',
             question: '以下说法正确的是',
             answer: [
-              'A.生存世界不能破坏其他人的任何建筑',
-              'B.坑里（创造世界）可以破坏其他人的建筑',
-              'C.坑里（创造世界）可以恶意PVP，反正大家都是创造模式',
-              'D.坑里没有生存世界的实体限制，可以放很多生物。',
+              ' 生存世界不能破坏其他人的任何建筑',
+              ' 坑里（创造世界）可以破坏其他人的建筑',
+              ' 坑里（创造世界）可以恶意PVP，反正大家都是创造模式',
+              ' 坑里没有生存世界的实体限制，可以放很多生物。',
             ],
             score: 2,
             correct: 0
@@ -767,10 +767,10 @@ export default {
             type: 'checkbox',
             question: '原版游戏中，能够点燃方块的物品有（多选）',
             answer: [
-              'A.岩浆',
-              'B.燃烧的箭',
-              'C.火',
-              'D.燃烧弹',
+              ' 岩浆',
+              ' 燃烧的箭',
+              ' 火',
+              ' 燃烧弹',
             ],
             score: 2,
             correct: [0, 2, 3]
@@ -779,10 +779,10 @@ export default {
             type: 'radio',
             question: '以下物品能做出床的选项是',
             answer: [
-              'A.3羊毛，1橡木',
-              'B.3羊毛，6木板',
-              'C.12线，6木板',
-              'D.12线，2橡木'
+              ' 3羊毛，1橡木',
+              ' 3羊毛，6木板',
+              ' 12线，6木板',
+              ' 12线，2橡木'
             ],
             score: 2,
             correct: 3
@@ -791,10 +791,10 @@ export default {
             type: 'radio',
             question: '以下那种物品恢复的血量最多',
             answer: [
-              'A.金苹果',
-              'B.治疗2药水',
-              'C.生命恢复2药水',
-              'D.生命恢复效果的信标'
+              ' 金苹果',
+              ' 治疗2药水',
+              ' 生命恢复2药水',
+              ' 生命恢复效果的信标'
             ],
             score: 2,
             correct: 3
@@ -803,10 +803,10 @@ export default {
             type: 'checkbox',
             question: '床 的作用有那些（多选）',
             answer: [
-              'A.重置出生点',
-              'B.减少掉落伤害',
-              'C.驱赶苦力怕',
-              'D.跳过黑夜'
+              ' 重置出生点',
+              ' 减少掉落伤害',
+              ' 驱赶苦力怕',
+              ' 跳过黑夜'
             ],
             score: 2,
             correct: [0, 1, 3]
@@ -815,10 +815,10 @@ export default {
             type: 'radio',
             question: '以下哪个群系有树',
             answer: [
-              'A.沙漠群系',
-              'B.蘑菇岛群系',
-              'C.暖洋群系',
-              'D.向日葵平原群系',
+              ' 沙漠群系',
+              ' 蘑菇岛群系',
+              ' 暖洋群系',
+              ' 向日葵平原群系'
             ],
             score: 2,
             correct: 3
@@ -827,10 +827,10 @@ export default {
             type: 'radio',
             question: '以下哪种村民出售命名牌',
             answer: [
-              'A.盔甲商',
-              'B.工具商',
-              'C.图书管理员',
-              'D.渔夫'
+              ' 盔甲商',
+              ' 工具商',
+              ' 图书管理员',
+              ' 渔夫'
             ],
             score: 2,
             correct: 2
