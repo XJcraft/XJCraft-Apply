@@ -109,7 +109,7 @@ export default {
         }
       ).then(() => {
         apply({
-          player_name: row.player_name,
+          id: row.id,
           result
         }).then(response => {
           notifySuccess(result === 'ACCEPT' ? '审核成功，已自动为其创建账号' : '拒绝成功')

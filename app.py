@@ -74,14 +74,14 @@ def req_list() -> dict:
 
 @auth
 @app.route("/api/req/apply", methods=["POST"])
-@valid_json("player_name", [valid_not_blank, valid_regexp(r"[a-zA-Z0-9_]{3,16}")])
+@valid_json("id", [valid_not_blank])
 @transactional
 def apply() -> dict:
     """
     OP 处理玩家申请
     """
     json_data = request.get_json()
-    player_name = json_data["player_name"]
+    id = json_data["id"]
     result = ApplyStatus.__members__[json_data["result"]]
 
     if not result or result is ApplyStatus.NEW:
@@ -89,7 +89,7 @@ def apply() -> dict:
 
     # 查出玩家
     player: ApplyPlayer = ApplyPlayer.query \
-        .filter_by(player_name=player_name) \
+        .filter_by(id=id) \
         .first()
 
     if not player:
@@ -140,6 +140,7 @@ def req() -> dict:
     # 玩家名查重
     player: ApplyPlayer = ApplyPlayer.query \
         .filter_by(player_name=json_data["player_name"]) \
+        .filter(ApplyPlayer.status.in_([ApplyStatus.NEW, ApplyStatus.ACCEPT])) \
         .first()
     if player:
         return fail("玩家名已存在")
@@ -173,7 +174,7 @@ def req() -> dict:
                 op_name = op_name[:-3]
 
     ip = get_ip()
-    if ip != '127.0.0.11':
+    if ip != '127.0.0.1':
         ip_count = db.session.query(func.count(ApplyPlayer.id)) \
             .filter_by(ip=ip, status=ApplyStatus.NEW) \
             .count()
