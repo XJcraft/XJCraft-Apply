@@ -64,6 +64,7 @@ def req_list() -> dict:
     status = request.args["status"]
     query = db.session.query(ApplyPlayer)
     if keyword:
+        keyword = '%' + keyword + '%'  # 此处无 SQL 注入风险
         query = query.filter(or_(ApplyPlayer.player_name.like(keyword), ApplyPlayer.ip.like(keyword), ApplyPlayer.qq.like(keyword)))
     if status:
         query = query.filter_by(status=ApplyStatus.__members__[status])
