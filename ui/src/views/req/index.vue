@@ -16,7 +16,7 @@
           span 请下载并阅读规则哟(提取码 hvcn)
 
         div(style={ 'margin-top': '32px' })
-          el-button(:disabled="step0.step >= 1 && step0.step < step0.waitTime", @click="clickStep0") {{ step0.btnName }}
+          el-button(:disabled="step0.step === 1", @click="clickStep0") {{ step0.btnName }}
 
       div.paddintop(v-else-if="step === 1", style={ width: '600px', margin: '0 auto', color: '#eee' })
         div(v-for="(qa, idx) in step1.qa", :key="idx", style={ 'margin-top': '8px' })
@@ -48,7 +48,7 @@
                 el-radio(:label="true", style={ color: '#eee', 'margin-top': '8px' }) {{ (qa.answer && qa.answer[1]) || '正确' }}
 
         div(style={ 'margin-top': '50px' }, align="center")
-          el-button(:disabled="step1.wait >= 1", @click="clickStep1") {{ step1.btnName }}
+          el-button(:disabled="step1.disabled", @click="clickStep1") {{ step1.btnName }}
 
       div.paddintop(v-else-if="step === 2")
         el-form.login-form(ref="reqForm", :model="reqForm", :rules="reqRules", autocomplete="off", label-position="left")
@@ -175,7 +175,7 @@ export default {
       step0: {
         btnName: '点击下载规则',
         step: 0,
-        waitTime: 301 // 设置为等待的秒数 + 1
+        waitTime: 300
       },
       step1: {
         // 题目
@@ -746,7 +746,7 @@ export default {
               ' 恢复原样',
               ' 又不是我挖的，不用管。',
               ' 把现场截图，并告诉附近居民此处需要点亮',
-              ' 不用恢复，把周围用火把插亮就行了',
+              ' 不用恢复，把周围用火把插亮就行了'
             ],
             score: 2,
             correct: [1, 3]
@@ -758,7 +758,7 @@ export default {
               ' 生存世界不能破坏其他人的任何建筑',
               ' 坑里（创造世界）可以破坏其他人的建筑',
               ' 坑里（创造世界）可以恶意PVP，反正大家都是创造模式',
-              ' 坑里没有生存世界的实体限制，可以放很多生物。',
+              ' 坑里没有生存世界的实体限制，可以放很多生物。'
             ],
             score: 2,
             correct: 0
@@ -770,7 +770,7 @@ export default {
               ' 岩浆',
               ' 燃烧的箭',
               ' 火',
-              ' 燃烧弹',
+              ' 燃烧弹'
             ],
             score: 2,
             correct: [0, 2, 3]
@@ -834,15 +834,15 @@ export default {
             ],
             score: 2,
             correct: 2
-          },
-
+          }
         ],
         // 所有题目总分数(自动计算)
         totalScore: -1,
         // 最低多少分可以过
         minScore: 80,
         btnName: '答题完毕，下一步',
-        wait: 0
+        disabled: false,
+        wait: 120
       },
       reqForm: {
         player_name: '',
@@ -883,16 +883,16 @@ export default {
       // player 字段
       switch (qa.type) {
         case 'radio':
-          this.$set(qa,"player", -1)
+          this.$set(qa, 'player', -1)
           break
         case 'checkbox':
-          this.$set(qa,"player", [])
+          this.$set(qa, 'player', [])
           break
         case 'switch':
-          this.$set(qa,"player", void 0)
+          this.$set(qa, 'player', void 0)
           break
         case 'input':
-          this.$set(qa,"player", [])
+          this.$set(qa, 'player', [])
           break
       }
 
@@ -900,7 +900,7 @@ export default {
       switch (qa.type) {
         case 'radio':
         case 'checkbox':
-          this.$set(qa,"shuff", [])
+          this.$set(qa, 'shuff', [])
           break
       }
       if (qa.shuff) {
@@ -951,23 +951,34 @@ export default {
         }
       })
     },
+    timeout(second, fn, done) {
+      let lastRemaining = -1
+      const end = new Date().getTime() + (second * 1000)
+      const h = setInterval(() => {
+        const remaining = Math.ceil((end - new Date().getTime()) / 1000)
+        if (lastRemaining !== remaining) {
+          lastRemaining = remaining
+          fn(remaining, () => clearInterval(h))
+        }
+
+        if (remaining <= 0) {
+          clearInterval(h)
+          if (done) done()
+        }
+      }, 100)
+    },
     clickStep0() {
       if (this.step0.step === 0) {
         window.open('https://pan.baidu.com/s/1xS2xf6SsiOrK-ctMrQVHOA')
 
-        let h = -1
-        const code = () => {
-          this.step0.step += 1
-          if (this.step0.step === this.step0.waitTime) {
-            this.step0.btnName = '已阅读，下一步'
-            clearInterval(h)
-          } else {
-            this.step0.btnName = '已阅读，下一步(' + (this.step0.waitTime - this.step0.step) + ')'
-          }
-        }
-        h = setInterval(code, 1000)
-        code()
-      } else if (this.step0.step === this.step0.waitTime) {
+        this.step0.step = 1
+        this.timeout(this.step0.waitTime, remaining => {
+          this.step0.btnName = '已阅读，下一步(' + remaining + ')'
+        }, () => {
+          this.step0.btnName = '已阅读，下一步'
+          this.step0.step = 2
+        })
+      } else if (this.step0.step === 2) {
         this.step += 1
       }
     },
@@ -1009,19 +1020,13 @@ export default {
         this.step += 1
       } else {
         notifyWarn('您答错的有点多呢，再努力下试试吧~')
-        let h = -1
-        this.step1.wait = 120
-        const code = () => {
-          this.step1.wait -= 1
-          if (this.step1.wait === 0) {
-            this.step1.btnName = '答题完毕，下一步'
-            clearInterval(h)
-          } else {
-            this.step1.btnName = '答题完毕，下一步(' + (this.step1.wait) + ')'
-          }
-        }
-        h = setInterval(code, 1000)
-        code()
+        this.step1.disabled = true
+        this.timeout(this.step1.wait, remaining => {
+          this.step1.btnName = '答题完毕，下一步(' + remaining + ')'
+        }, () => {
+          this.step1.btnName = '答题完毕，下一步'
+          this.step1.disabled = false
+        })
       }
     },
     clickStep3() {
