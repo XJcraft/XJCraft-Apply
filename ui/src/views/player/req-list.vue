@@ -1,7 +1,12 @@
 <template lang="pug">
   .app-container
     .filter-container
-      el-button.filter-item(v-waves, type="primary", icon="el-icon-search", @click="getList")
+      el-tooltip(content="可筛选玩家名、IP、QQ", effect="dark", placement="bottom")
+        el-input.filter-item(v-model="listQuery.keyword", placeholder="请输入关键字", style="width: 200px;", @keyup.enter.native="getList")
+      el-select.filter-item(v-model="listQuery.status", style={ 'margin-left': '8px' })
+        el-option(key="", label="任意", value="")
+        el-option(v-for="(v, k) in statuses", :key="k", :label="v", :value="k")
+      el-button.filter-item(v-waves, style={ 'margin-left': '8px' }, type="primary", icon="el-icon-search", @click="getList")
 
     el-table(
       v-loading="listLoading",
@@ -73,6 +78,8 @@ export default {
   data() {
     return {
       listQuery: {
+        keyword: '',
+        status: '',
         page: 1,
         pageSize: 20
       },

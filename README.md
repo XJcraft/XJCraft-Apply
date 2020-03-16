@@ -92,8 +92,8 @@ server {
 ### 目录结构
 ```
 /
-|-- ui 前端目录
-|   |-- TODO
+|-- ui/ 前端目录
+|   |-- 请参照 https://github.com/PanJiaChen/vue-admin-template
 |-- app.py web 接口
 |-- main.py 启动文件
 |-- model.py DB 模型文件

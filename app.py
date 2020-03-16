@@ -6,7 +6,7 @@ from webbase import app, db, transactional
 from model import ApplyOP, ApplyPlayer, ApplyStatus, ApplyType, CrazyLoginAccount
 from util import valid_json, valid_not_blank, valid_regexp, get_ip, auth, success, fail, pager_data
 from flask import session, request
-from sqlalchemy import func
+from sqlalchemy import func, or_
 
 
 @app.route("/api/login/login", methods=["POST"])
@@ -60,7 +60,14 @@ def req_list() -> dict:
     count: int = db.session.query(func.count(ApplyPlayer.id)).scalar()
     page: int = max(1, min(page, math.ceil(count / page_size)))
 
-    apply_players: list = ApplyPlayer.query \
+    keyword = request.args["keyword"]
+    status = request.args["status"]
+    query = db.session.query(ApplyPlayer)
+    if keyword:
+        query = query.filter(or_(ApplyPlayer.player_name.like(keyword), ApplyPlayer.ip.like(keyword), ApplyPlayer.qq.like(keyword)))
+    if status:
+        query = query.filter_by(status=ApplyStatus.__members__[status])
+    apply_players: list = query\
         .order_by(ApplyPlayer.req_time.desc()) \
         .limit(page_size) \
         .offset((page - 1) * page_size) \
