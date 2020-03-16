@@ -31,7 +31,7 @@
       el-table-column(label="申请类型", align="center", width="120px")
         template(slot-scope="{row}")
           span {{ row.type | typeFilter }}
-      el-table-column(label="IP", prop="ip", align="center", width="120px")
+      el-table-column(label="IP", prop="ip", align="center", width="130px")
       el-table-column(label="QQ", prop="qq", align="center", width="100px")
       el-table-column(align="center")
         template(slot="header")
