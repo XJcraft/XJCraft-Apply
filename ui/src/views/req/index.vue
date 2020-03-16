@@ -130,6 +130,8 @@
         div 申请成功，请耐心等待 OP 处理
         div(style={ 'margin-top': '32px' })
           el-button(@click="clickStep3") 查询处理进度
+    footer(align="center")
+      a(href="http://www.beian.miit.gov.cn/", target="_blank") 陕ICP备19017184号
 </template>
 
 <script>

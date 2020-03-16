@@ -38,6 +38,8 @@
             svg-icon(:icon-class="passwordType === 'password' ? 'eye' : 'eye-open'")
 
       el-button(:loading="loading", type="primary", style="width:100%;margin-bottom:30px;", @click.native.prevent="handleLogin") 登录
+    footer(align="center")
+      a(href="http://www.beian.miit.gov.cn/", target="_blank") 陕ICP备19017184号
 </template>
 
 <script>
