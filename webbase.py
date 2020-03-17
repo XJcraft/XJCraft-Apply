@@ -30,6 +30,12 @@ class MyJSONEncoder(JSONEncoder):
 
 
 app = Flask(setting.APP_NAME)
+
+app.config["SQLALCHEMY_DATABASE_URI"] = setting.SQL_URL
+app.config['SQLALCHEMY_ECHO'] = setting.DEBUG
+app.config['SQLALCHEMY_POOL_RECYCLE'] = 540
+app.config['SQLALCHEMY_POOL_TIMEOUT'] = 20
+
 db = SQLAlchemy(app)
 transactional_local_data = threading.local()
 
@@ -40,8 +46,6 @@ def init():
     app.secret_key = setting.HTTP_SECRET
     app.json_encoder = MyJSONEncoder
     # TODO 公共异常处理？
-    app.config["SQLALCHEMY_DATABASE_URI"] = setting.SQL_URL
-    app.config['SQLALCHEMY_ECHO'] = setting.DEBUG
 
     db.create_all()
     app.run(port=setting.HTTP_PORT)  # 注意，阻塞性操作
