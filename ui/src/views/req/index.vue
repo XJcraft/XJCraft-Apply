@@ -13,7 +13,7 @@
       div.paddintop(v-if="step === 0", align="center")
         div
           span 你好，欢迎来到XJcraft！
-          span 请下载并阅读规则哟(提取码 mkbc)
+          span 请下载并阅读规则哟
 
         div(style={ 'margin-top': '32px' })
           el-button(:disabled="step0.step === 1", @click="clickStep0") {{ step0.btnName }}
@@ -971,7 +971,7 @@ export default {
     },
     clickStep0() {
       if (this.step0.step === 0) {
-        window.open('https://pan.baidu.com/s/1_ThLAxoLjk100XgIbwnVsA')
+        window.open('http://download.xjcraft.org')
 
         this.step0.step = 1
         this.timeout(this.step0.waitTime, remaining => {
