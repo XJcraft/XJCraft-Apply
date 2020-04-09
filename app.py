@@ -163,9 +163,17 @@ def req() -> dict:
     # QQ 查重
     player: ApplyPlayer = ApplyPlayer.query \
         .filter_by(qq=json_data["qq"]) \
+        .filter(ApplyPlayer.status.in_([ApplyStatus.NEW, ApplyStatus.ACCEPT])) \
         .first()
     if player:
-        return fail("QQ 号已存在")
+        return fail("QQ 号已存在或正在审核")
+    last_time = db.session.query(ApplyPlayer.req_time) \
+            .filter_by(qq=json_data["qq"], status=ApplyStatus.DENY) \
+            .order_by(ApplyPlayer.req_time.desc()) \
+            .limit(1) \
+            .first()
+    if last_time and (datetime.now() - last_time[0]).seconds < 86400:
+        return fail("你的申请已被拒绝，同一个 QQ 每天只能申请一次")
 
     # 校验参数
     req_type: str = json_data["type"]
