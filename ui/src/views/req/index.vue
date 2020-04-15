@@ -386,7 +386,7 @@ export default {
             answer: [
               ' 3',
               ' 7',
-              ' 10',
+              ' 11',
               ' 一直会攻击，与亮度无关'
             ],
             score: 2,
@@ -454,7 +454,7 @@ export default {
           },
           { // 单选题
             type: 'radio',
-            question: '以下选项哪一个是效用性生物？',
+            question: '以下选项哪一个是中立性生物？',
             answer: [
               ' 海豚',
               ' 僵尸',
